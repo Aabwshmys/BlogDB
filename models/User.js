@@ -46,7 +46,7 @@ const UserModel= mongoose.model("User",UserSchema);
 const validateRegistetUser =(obj) =>{
   const schema = joi.object({
     username:joi.string().trim().maxlength(100).minlength(6).unique().required(),
-    email:joi.string().trim().minlength(6).unique().required().email,
+    email:joi.string().trim().minlength(6).unique().required().email(),
     password;joi.string().trim().minlength(6).required()
   })
   return schema.validate(obj);

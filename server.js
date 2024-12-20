@@ -8,7 +8,7 @@ const Users = require("./router/Users");
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://alnasr9988:<db_password>@cluster0.xmfbu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb+srv://alnasr9988:A0994660508a@cluster0.xmfbu.mongodb.net/blogdb?retryWrites=true&w=majority&appName=Cluster0")
 .than(res => console.log("connected db"));
 
 app.use("/auth",Auth);

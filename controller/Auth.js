@@ -35,7 +35,7 @@ module.exports = {
     if(!cheackPassword){
       return res.status(400).json({message:"Error in Email or Password"});
     }
-    const token = jwt.sign({id:cheackUser._id},"SECRET");
+    const token = cheackUser.generateAuthToken();
     return res.status(200).json({message:"Logined is successfully",token});
   })
   

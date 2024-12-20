@@ -2,11 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
-const register = require("./router/Register");
+const Auth = require("./router/Auth");
 
 app.use(express.json());
 app.use(cors());
-app.use("/auth",register);
+app.use("/auth",Auth);
 
 
 app.listen(3000,()=>{

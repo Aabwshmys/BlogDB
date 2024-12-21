@@ -17,5 +17,8 @@ module.exports = {
       return res.status(404).json({message:"user not fund"});
     }
     return res.status(200).json(user);
-  });
+  }),
+  updateUser:asyncHandler(async (req,res) => {
+    
+  })
 };

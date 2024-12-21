@@ -25,6 +25,16 @@ function verifyTokenAndAdmin (req,res,next){
     }
   });
 }
+function verifyTokenAndUserId (req,res,next){
+  verifyToken(req,res,()=>{
+    if(req.user.id === req.params.id){
+      next();
+    }else{
+      return res.status(401).json({ message: "No allowed " });
+    }
+  });
+}
 module.exports = {
-  verifyTokenAndAdmin
+  verifyTokenAndAdmin,
+  verifyTokenAndUserId
 };

@@ -12,6 +12,10 @@ module.exports = {
     }
   }),
   getUser:asyncHandler(async (req,res) => {
-    const user = await UserModel.findOne()
+    const user = await UserModel.findById(req.params.id);
+    if(!user){
+      return res.status(404).json({message:"user not fund"});
+    }
+    return res.status(200).json(user);
   });
 };

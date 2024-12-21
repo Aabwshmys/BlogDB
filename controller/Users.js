@@ -1,6 +1,7 @@
 
 const asyncHandler = require("express-async-handler");
-const {UserModel} = require("../models/User");
+const {UserModel,validateUpdateUser} = require("../models/User");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
   getAllUsers: asyncHandler(async (req, res) => {
@@ -19,6 +20,21 @@ module.exports = {
     return res.status(200).json(user);
   }),
   updateUser:asyncHandler(async (req,res) => {
+    const {error} = validateUpdateUser(req.body);
+    if(error){
+      return res.status(400).json({message:error.details[0].messagr});
+    }
+    if(req.body.password){
+      req.body.password = bcrypt.hashSync(req.body.password,10);
+    }
     
+    const user = await UserModel.findByIdAndUpdate(req.params.id,{
+      $set{
+         username:req.body.username,
+         password:req.body.password,
+         bio:req.body.bio
+      }
+    },{new:true});
+  return res.status(200).json(user);
   })
 };

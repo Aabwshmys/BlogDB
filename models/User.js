@@ -64,9 +64,18 @@ const validateLoginUser = (obj) => {
   });
   return schema.validate(obj);
 };
+const validateUpdateUser = (obj) => {
+  const schema = Joi.object({
+    username: Joi.string().trim().min(3),
+    password: Joi.string().trim().min(6),
+    bio:Joi.string().trim().min(6)
+  });
+  return schema.validate(obj);
+};
 
 module.exports = {
   UserModel,
   validateRegisterUser,
-  validateLoginUser
+  validateLoginUser,
+  validateUpdateUser
 };

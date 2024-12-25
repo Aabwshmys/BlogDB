@@ -26,4 +26,4 @@ const photoUpload = multer({
   limits:{filesize: 1024*1024 * 3}
 })
 
-moudel.exports = photoUpload;
+moudle.exports = photoUpload;

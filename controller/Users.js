@@ -36,5 +36,8 @@ module.exports = {
       }
     },{new:true});
   return res.status(200).json(user);
+  }),
+  uploadProfile:asyncHandler(async (req,res)=>{
+    res.status(200).json({message:"Upload Photo Profile is successfully"});
   })
 };

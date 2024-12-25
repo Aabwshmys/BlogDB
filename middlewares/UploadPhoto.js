@@ -2,28 +2,28 @@ const path = require("path");
 const multer = require("multer");
 
 const photoStorage = multer.diskStorage({
-  distination:function (req,file,cb){
-    cb(null,path.join(__dirname,'../images'));
+  destination: function (req, file, cb) { // تصحيح 'distination' إلى 'destination'
+    cb(null, path.join(__dirname, '../images'));
   },
-  filename:fumction(req,file,cb){
-    if(file){
-       cb(null,new Data().toISOString().replace("/:/g","-")+file.originalname);
-    }else{
-       cb(null,false);
+  filename: function (req, file, cb) { // تصحيح 'fumction' إلى 'function'
+    if (file) {
+      cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname); // تصحيح 'Data' إلى 'Date' وإصلاح التعبير العادي
+    } else {
+      cb(null, false);
     }
   }
 });
 
 const photoUpload = multer({
-  storage:photoStorage,
-  fileFilter:function (req,file,cb){
-    if(file.mimetype.startWith("image"){
-      cb(null,true);
-    }else{
-      cb({message:"unsuported file format" },false);
+  storage: photoStorage,
+  fileFilter: function (req, file, cb) {
+    if (file.mimetype.startsWith("image")) { // تصحيح 'startWith' إلى 'startsWith'
+      cb(null, true);
+    } else {
+      cb({ message: "unsupported file format" }, false); // تصحيح 'unsuported' إلى 'unsupported'
     }
   },
-  limits:{filesize: 1024*1024 * 3}
-})
+  limits: { fileSize: 1024 * 1024 * 3 } // تصحيح 'filesize' إلى 'fileSize'
+});
 
-moudle.exports = photoUpload;
+module.exports = photoUpload; // تصحيح 'moudle' إلى 'module'

@@ -6,4 +6,6 @@ const validateObjectId = require("../middlewares/ValidateObjectId");
 router.route("/profile").get(verifyTokenAndAdmin,controller.getAllUsers);
 router.route("/profile/:id").get(validateObjectId,controller.getUser);
 router.route("/profile/:id").put(validateObjectId,verifyTokenAndUserId,controller.updateUser);
+router.route("/profile/upload-peofile-photo").post(verifyTokenAndAdmin,controller.uploadProfile);
+
 module.exports = router;
